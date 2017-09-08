@@ -10,7 +10,7 @@ import './assets/swipe-button.css'
 import './assets/chat.css'
 import './assets/css/style.css'
 import './assets/jquery.color.js'
-import './assets/jquery-1.3.2.js'
+// import './assets/jquery-1.3.2.js'
 
 import * as firebase from 'firebase'
 

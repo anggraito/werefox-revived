@@ -5,7 +5,7 @@
         <div class="title">Username</div>
       </div>
       <ul class="messages">
-        <li v-for="chat in chatPublic" :key="chat['.key']">
+        <li class="boxes" v-for="chat in chatPublic" :key="chat['.key']">
           <strong :class="{'god-chat': chat.username == 'GOD'}">{{ chat.username }}</strong>: {{chat.message}}
         </li>
       </ul>
@@ -65,5 +65,15 @@ export default {
 <style>
   .god-chat {
     color: red;
+  }
+  .boxes{
+    background-color: rgba(222,222,222,0.5);
+    margin-bottom: 5px;
+  }
+  .boxes .god-chat{
+    background-color: #000;
+    padding: 3px;
+    border-radius: 5px;
+    margin-bottom: 10px;
   }
 </style>
