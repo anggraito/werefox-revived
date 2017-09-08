@@ -1,58 +1,73 @@
 <template>
   <div class="addroom">
     <div class="row card-wrap">
-      <div class="cardo col-sm-12 col-md-3">
-        <div class="box" type="button" data-toggle="modal" data-target="#myModal">
+      <div class="cardo col-sm-12 col-md-3" @click="addroom">
+        <div class="box">
           <div class="add-wrapper">
             <img src="../assets/plus.png" />
           </div>
           <div class="card-block">
-            <h4 class="card-title">Room Name</h4>
+            <h4 class="card-title">Add Town</h4>
           </div>
         </div>
       </div>
-      <!-- Modal -->
-      <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Room</h4>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="form-group">
-                  <label for="Room">Room:</label>
-                  <input type="Room" class="form-control" id="Room" placeholder="Room name">
-                </div>
-                <div class="form-group">
-                  <label for="player">Inform This Room:</label>
-                  <input type="player" class="form-control" id="player" placeholder="How many player">
-                </div>
-                <button class="btn sub btn-warning start">START</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="cardo col-sm-12 col-md-3">
+      <div class="cardo col-sm-12 col-md-3" v-for="room in rooms" @click="joinroom(room['.key'])" v-if="room.start == false">
+        <button type="button">
         <div class="box">
           <div class="img-wrapper">
             <img src="../assets/wolfie.png" />
           </div>
           <div class="card-block">
-            <h4 class="card-title">Room Name</h4>
+            <h4 class="card-title">Town Name</h4>
+            <h3 class="card-title"><strong>{{room.name}}</strong></h3>
+            <h4 class="card-title">Population: {{Object.keys(room.member).length}}</h4>
           </div>
         </div>
+      </button>
       </div>
-
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'addroom'
-}
+  import jwt from 'jsonwebtoken'
+  export default {
+    name: 'addroom',
+    firebase() {
+      return {
+        rooms: this.$db.ref('rooms')
+      }
+    },
+    data() {
+      return {
+        mydata: []
+      }
+    },
+    methods: {
+      joinroom(idroom, name) {
+        this.$db.ref('rooms').child(idroom).child('member').child(this.mydata.id).set({
+          username: this.mydata.username,
+          alive: true
+        })
+        this.$router.push({
+          path: `room/${idroom}`
+        })
+      },
+      gettoken() {
+        var decode = jwt.verify(window.localStorage.getItem('token'), 'werefox')
+        this.mydata = decode
+      },
+      addroom() {
+        this.$http.get('/create-room', {
+          headers: {
+            token: window.localStorage.getItem('token')
+          }
+        })
+      }
+    },
+    created() {
+      this.gettoken()
+    }
+  }
+
 </script>
