@@ -46,7 +46,7 @@
       <!-- End Modal -->
 
       <div class="chat-room col-sm-12 col-md-9">
-        <chatbox :id="id" />
+        <chatbox v-show="!villagerNight" :id="id" />
       </div>
       <div class="right-sidebar col-sm-12 col-md-3">
         <div class="alert alert-info">You vote: <strong>username</strong></div>
@@ -63,41 +63,14 @@
             </div>
           </li>
         </ul>
-        <button class="btn btn-warning start"  @click="startgame">START</button>
+        <button class="btn btn-warning start"  @click="day">START</button>
       </div>
     </div>
   </div>
 </template>
 <script>
-  function night() {
-      $('#sun_yellow').animate({'top':'96%','opacity':0.4}, 1200,function(){
-          $('#stars').animate({'opacity':1}, 500,function(){
-              $('#moon').animate({'top':'30%','opacity':1}, 500, function(){
-                  $('#sstar').animate({'opacity':1}, 300);
-                  $('#sstar').animate({
-                      'backgroundPosition':'0px 0px','top':'15%', 'opacity':0
-                  }, 500);
-              });
-          });
-      });
-      $('#sky').animate({'backgroundColor':'#4F0030'}, 1800);
-      $('#clouds').animate({'backgroundPosition':'1000px 0px','opacity':0}, 3000);
-      $('#night').animate({'opacity':0.8}, 2000);
-  }
 
-  function day() {
-      $('#moon').animate({'top':'60%','opacity':0}, 500, function(){
-        $('#stars').animate({'opacity':0}, 500,function(){
-          $('#sun_yellow').animate({'top':'50%','opacity':1}, 1200,function(){
 
-              });
-          });
-      });
-      $('#sky').animate({'backgroundColor':'#fff'}, 1800);
-      $('#clouds').css('backgroundPosition', '0px 0px')
-      $('#clouds').animate({'backgroundPosition':'1000px 0px','opacity':1}, 3000);
-      $('#night').animate({'opacity':0}, 2000);
-  }
   import chatbox from '@/components/Chatbox'
   import jwt from 'jsonwebtoken'
   export default {
@@ -122,6 +95,12 @@
       datauser () {
         var decoded = jwt.verify(window.localStorage.getItem('token'), 'werefox')
         return decoded
+      },
+      villagerNight () {
+        return this.room.phase == 'night' && this.userfire.role == 'villager'
+      },
+      currentPhase () {
+        return this.room.phase
       }
     },
     methods: {
@@ -157,9 +136,20 @@
         })
 
       }
+
     },
     created() {
       this.joined()
+    },
+    watch: {
+      currentPhase () {
+        if (this.currentPhase == 'night') {
+          night()
+        } else  {
+          day()
+        }
+        this.$db.ref('rooms').child(this.id).child('chatPublic').set(null)
+      }
     }
   }
 

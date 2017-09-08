@@ -4,7 +4,7 @@
       <div class="top_menu">
         <div class="title">Username</div>
       </div>
-      <ul class="messages">
+      <ul id="chatbox" class="messages">
         <li v-for="chat in chatPublic" :key="chat['.key']">
           <strong :class="{'god-chat': chat.username == 'GOD'}">{{ chat.username }}</strong>: {{chat.message}}
         </li>
@@ -51,6 +51,8 @@ export default {
     emitMessage (e) {
       e.preventDefault()
       if (this.textField.trim() !== '') {
+        var objDiv = document.getElementById('chatbox')
+        objDiv.scrollTop = objDiv.scrollHeight
         this.$db.ref('rooms').child(this.id).child('chatPublic').push({
           username: this.user.username,
           message: this.textField
