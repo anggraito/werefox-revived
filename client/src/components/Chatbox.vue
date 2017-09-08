@@ -44,7 +44,7 @@ export default {
   data () {
     return {
       textField: '',
-      user: jwt.verify(window.localStorage.getItem('accessToken'), 'werefox')
+      user: jwt.verify(window.localStorage.getItem('token'), 'werefox')
     }
   },
   firebase () {
