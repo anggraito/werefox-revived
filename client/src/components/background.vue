@@ -8,7 +8,7 @@
     <div id="stars"></div>
     <div id="sstar"></div>
     <div id="moon"></div>
-    <room />
+    <room :id="id" class="above"/>
   </div>
 </template>
 
@@ -16,6 +16,7 @@
 import room from '@/components/room'
 export default {
   name: 'bg',
+  props: ['id'],
   components: {
     room
   }
@@ -23,6 +24,7 @@ export default {
 </script>
 
 <style>
-
-
+  .above {
+    z-index: 100
+  }
 </style>

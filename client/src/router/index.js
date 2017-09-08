@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Dashboard from '@/components/dashboard'
-import Room from '@/components/room'
+// import Room from '@/components/room'
 import Hello from '@/components/Hello'
-//import Room from '@/components/background'
+import Room from '@/components/background'
 
 Vue.use(Router)
 
