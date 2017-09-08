@@ -33,18 +33,18 @@
   import jwt from 'jsonwebtoken'
   export default {
     name: 'addroom',
-    firebase() {
+    firebase () {
       return {
         rooms: this.$db.ref('rooms')
       }
     },
-    data() {
+    data () {
       return {
         mydata: []
       }
     },
     methods: {
-      joinroom(idroom, name) {
+      joinroom (idroom, name) {
         this.$db.ref('rooms').child(idroom).child('member').child(this.mydata.id).set({
           username: this.mydata.username,
           alive: true
@@ -53,11 +53,11 @@
           path: `room/${idroom}`
         })
       },
-      gettoken() {
+      gettoken () {
         var decode = jwt.verify(window.localStorage.getItem('token'), 'werefox')
         this.mydata = decode
       },
-      addroom() {
+      addroom () {
         this.$http.get('/create-room', {
           headers: {
             token: window.localStorage.getItem('token')
@@ -65,7 +65,7 @@
         })
       }
     },
-    created() {
+    created () {
       this.gettoken()
     }
   }

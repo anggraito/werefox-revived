@@ -6,7 +6,7 @@
       </div>
       <ul class="messages">
         <li v-for="chat in chatPublic">
-          <strong>{{ chat.username }}</strong>: {{chat.message}}
+          <strong :class="{'god-chat': chat.username == 'GOD'}">{{ chat.username }}</strong>: {{chat.message}}
         </li>
       </ul>
       <div class="bottom_wrapper clearfix">
@@ -61,3 +61,9 @@ export default {
   }
 }
 </script>
+
+<style>
+  .god-chat {
+    color: red;
+  }
+</style>
