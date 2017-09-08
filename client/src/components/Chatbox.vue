@@ -68,4 +68,14 @@ export default {
   .god-chat {
     color: red;
   }
+  .boxes{
+    background-color: rgba(222,222,222,0.5);
+    margin-bottom: 5px;
+  }
+  .boxes .god-chat{
+    background-color: #000;
+    padding: 3px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
 </style>

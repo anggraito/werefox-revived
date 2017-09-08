@@ -7,7 +7,7 @@
           <a data-toggle="modal" data-target="#myModal" type="button" class="vote"><span>Vote</span><i class="glyphicon glyphicon-volume-up"></i></a>
         </li>
         <li @click="callServerForBrowserCloseEvent">
-          <a class="out"><span></span><i class="glyphicon glyphicon-remove"></i> Exit</a>
+          <a class="out"><span>Exit</span><i class="glyphicon glyphicon-remove"></i></a>
         </li>
       </ul>
       <div class="title-page col-sm-12 com-md-9" v-if="room.start == false">
