@@ -4,7 +4,7 @@
       <h2>{{ room.name }}</h2>
       <ul class="swipe-wrap">
         <li>
-          <a href="#" class="vote"><span></span><i class="glyphicon glyphicon-volume-up"></i> Vote</a>
+          <a data-toggle="modal" data-target="#myModal" type="button" class="vote"><span>Vote</span><i class="glyphicon glyphicon-volume-up"></i></a>
         </li>
         <li @click="startgame">
           <a href="#" class="vote"><span></span><i class="glyphicon glyphicon-add"></i>Start</a>
@@ -23,6 +23,28 @@
         <img src="../assets/wolfie.png" />
         <p>Role: Wolfie/Villager</p>
       </div>
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Vote</h4>
+              <small>Choose who's the werefox there as you think? </small>
+            </div>
+            <div class="modal-body">
+              <form action="">
+                <input type="radio" name="gender" value="userid"> username<br>
+                <button type="submit" class="btn btn-warning start sub">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Modal -->
+
       <div class="chat-room col-sm-12 col-md-9">
         <chatbox :id="id" />
       </div>
@@ -41,14 +63,12 @@
             </div>
           </li>
         </ul>
+        <button class="btn btn-warning start">START</button>
       </div>
     </div>
   </div>
 </template>
 <script>
-  window.onbeforeunload = function () {
-    return "Are you sure you want to close the window?";
-  }
   import chatbox from '@/components/Chatbox'
   import jwt from 'jsonwebtoken'
   export default {
@@ -106,6 +126,7 @@
             token: window.localStorage.getItem('token')
           }
         })
+
       }
     },
     created() {
