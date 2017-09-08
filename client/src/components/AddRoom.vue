@@ -11,7 +11,7 @@
           </div>
         </div>
       </div>
-      <div class="cardo col-sm-12 col-md-3" v-for="room in rooms" @click="joinroom(room['.key'])" v-if="room.start == false">
+      <div class="cardo col-sm-12 col-md-3" v-for="room in rooms" @click="joinroom(room['.key'])" :key="room._id" v-if="room.start == false">
         <button type="button">
         <div class="box">
           <div class="img-wrapper">
