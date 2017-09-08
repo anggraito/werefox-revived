@@ -10,8 +10,8 @@ const db = firebaseApp.database()
 const Rooms = db.ref('rooms')
 
 //milisecond
-const PHASE_DAY = 3 * 1000
-const PHASE_VOTE = 3 * 1000
+const PHASE_DAY = 3 * 60 * 1000
+const PHASE_VOTE = 1 * 60 * 1000
 
 module.exports = {
   createRoom: (req, res) => {
@@ -30,9 +30,7 @@ module.exports = {
           username: req.headers.userVerified.username,
           roomMaster: true
         }
-      },
-      chatPublic: {},
-      chatWerewolf: {}
+      }
     })
 
     console.log('sent id back to client', newRoomKey);
@@ -80,7 +78,7 @@ function checkWin(roomKey, cb) {
       Rooms.child(roomKey).child('winner').set('villager')
     } else if (villager.length == 0) {
       Rooms.child(roomKey).child('over').set(true)
-      Rooms.child(roomKey).child('winner').set('werewolf')
+      Rooms.child(roomKey).child('winner').set('werefox')
     } else {
       cb(roomKey)
     }
