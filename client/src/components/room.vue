@@ -18,7 +18,5 @@ export default {
 </script>
 
 <style>
-.container-fluid{
-  background-color: #fff;
-}
+
 </style>

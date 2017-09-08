@@ -3,18 +3,41 @@
     <div class="row room-wrap">
       <ul class="swipe-wrap">
         <li>
-          <a href="#" class="vote"><span></span><i class="glyphicon glyphicon-volume-up"></i> Vote</a>
+          <a data-toggle="modal" data-target="#myModal" type="button" class="vote"><span>Vote</span><i class="glyphicon glyphicon-volume-up"></i></a>
         </li>
         <li>
-          <a href="#" class="out"><span></span><i class="glyphicon glyphicon-remove"></i> Exit</a>
+          <a href="#" type="button" class="out"><span>Exit</span><i class="glyphicon glyphicon-remove"></i></a>
         </li>
       </ul>
-      <div class="title-page col-sm-12 com-md-9">
-        <h2>Room Chatting</h2>
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Vote</h4>
+              <small>Choose who's the werefox there as you think? </small>
+            </div>
+            <div class="modal-body">
+              <form action="">
+                <input type="radio" name="gender" value="userid"> username<br>
+                <button type="submit" class="btn btn-warning start sub">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="role-page col-sm-12 com-md-3">
-        <img src="../assets/wolfie.png" />
-        <p>Role: Wolfie/Villager</p>
+      <!-- End Modal -->
+      <div class="row ">
+        <div class="title-page col-sm-9 com-md-9">
+          <h2>Room Chatting</h2>
+        </div>
+        <div class="role-page alert-warning col-sm-3 col-md-3">
+          <img class="left-role" src="../assets/villager1.jpg" />
+          <p class="right-role">Role: Wolfie/Villager</p>
+        </div>
       </div>
       <div class="chat-room col-sm-12 col-md-9">
         <chatbox :id="id"/>
@@ -34,6 +57,7 @@
             </div>
           </li>
         </ul>
+        <button class="btn btn-warning start">START</button>
       </div>
     </div>
   </div>
