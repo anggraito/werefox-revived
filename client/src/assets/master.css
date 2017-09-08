@@ -24,11 +24,6 @@ rgb(242,79,11)
 white smoke : 
 use this #f6f6f6 */
 
-*{
-	/* margin:0;
-	padding:0;
-  box-sizing: content-box; */
-}
 .card-wrap{
   margin: 0 5%;
 }
@@ -80,17 +75,51 @@ use this #f6f6f6 */
 .room-wrap{
   padding: 2% 5%;
 }
+  .room-wrap h2{
+    text-align: left;
+    color: #f24f0b;
+    font-size: 45px;
+    font-family: 'Passion One', cursive;
+  }
   .chat-room{
     background-color: #f6f6f6;
     height: 80vh;
-    overflow-y: scroll;
+    margin-bottom: 20px;
   }
+.night{
+  
+}
 
 .right-sidebar{
   text-align: left;
 }
+  .media-list{
+    background-color: #f6f6f6;
+  }
+    .media-list .media{
+      padding: 10px;
+      margin-top: 0;
+    }
   .media-left img{
-    width: 50px;
+    width: 30px;
+    background-color: #fdb418;
+  }
+  .media-body h4{
+    margin-top: 7px;
+  }
+.transparant{
+  background-color: rgba(255,255,255, 0);
+  border: none;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.role-page{
+  width: 100px;
+  height: 100px;
+}
+  .role.page img{
+    width: 50%;
   }
 
 /* Small devices (tablets, 768px and up) */

@@ -2,12 +2,7 @@
   <div class="chatbox">
     <div class="chat_window">
       <div class="top_menu">
-          <div class="buttons">
-              <div class="button close"></div>
-              <div class="button minimize"></div>
-              <div class="button maximize"></div>
-          </div>
-          <div class="title">Chat</div>
+        <div class="title">Username</div>
       </div>
       <ul class="messages">
         <li v-for="chat in chatPublic">
@@ -20,7 +15,7 @@
               <input class="message_input" placeholder="Type your message here..." v-model="textField" />
           </div>
           <div class="send_message">
-              <input type="submit" value="Send">
+              <button class="transparant" type="submit">Send</button>
           </div>
         </form>
       </div>

@@ -3,10 +3,26 @@
     <div class="row room-wrap">
       <h2>{{room.name}}</h2>
       <button type="button" @click="callServerForBrowserCloseEvent">Leave</button>
+      <ul class="swipe-wrap">
+        <li>
+          <a href="#" class="vote"><span></span><i class="glyphicon glyphicon-volume-up"></i> Vote</a>
+        </li>
+        <li>
+          <a href="#" class="out"><span></span><i class="glyphicon glyphicon-remove"></i> Exit</a>
+        </li>
+      </ul>
+      <div class="title-page col-sm-12 com-md-9">
+        <h2>Room Chatting</h2>
+      </div>
+      <div class="role-page col-sm-12 com-md-3">
+        <img src="../assets/wolfie.png" />
+        <p>Role: Wolfie/Villager</p>
+      </div>
       <div class="chat-room col-sm-12 col-md-9">
         <chatbox :id="id" />
       </div>
       <div class="right-sidebar col-sm-12 col-md-3">
+        <div class="alert alert-info">You vote: <strong>username</strong></div>
         <h4>User List</h4>
         <ul class="media-list">
           <li class="media" v-for="user in room.member">

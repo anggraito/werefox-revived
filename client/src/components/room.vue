@@ -15,5 +15,10 @@ export default {
     dayroom
   }
 }
-
 </script>
+
+<style>
+.container-fluid{
+  background-color: #fff;
+}
+</style>

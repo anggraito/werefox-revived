@@ -1,0 +1,103 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+.swipe-wrap {
+  list-style: none;
+  position: absolute;
+  top: 30%;
+  left: 0%;
+  padding-left: 0;
+  z-index: 99;
+  transform: translateY(-50%);}
+    .swipe-wrap li a {
+      display: block;
+      margin-left: -2px;
+      height: 60px;
+      width: 60px;
+      border-radius: 0 25px 25px 0;
+      /* border: 2px solid #000;
+      background: #FFF; */
+      margin-bottom: 1em;
+      transition: all .4s ease;
+      /* color: #2980b9; */
+      text-decoration: none;
+      line-height: 60px;
+      position: relative;}
+      .swipe-wrap li a:hover {
+        cursor: pointer;
+        width: 180px;
+        color: #fff;}
+        .swipe-wrap li a span {
+          left: 0;
+        }
+
+      .swipe-wrap li span {
+        padding: 0 30px 0 15px;
+        position: absolute;
+        left: -120px;
+        transition: left .4s ease;
+      }
+      .swipe-wrap li a i {
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        font-size: 1.5em;
+      }
+    .out{
+      background-color: #cfe8f5;
+      border-color: #cfe8f5;
+      color:#000}
+      .out &:hover {
+        color:#e67e22 !important;
+        background: rgba(#27ae60, 1);
+      }
+    .vote {
+      background-color: #e67e22;
+      border-color: #e67e22;
+      color: #fff;}
+      .vote &:hover {
+        background: rgba(#e67e22, 1);
+      }
+
+
+/* entypo */
+
+/* // [class*="entypo-"]:before {
+//   font-family: 'entypo', sans-serif;
+// }
+
+// div {
+//   text-align: center;
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -60%);
+//   h1 {
+//     font-weight: 600;
+//     font-size: 2.4em;
+//     color: #303030;
+//     margin-bottom: .5em;
+//   }
+  
+//   p {
+//     color: #999;
+//     font-weight: 400;
+//     font-size: 1.2em;
+//   }
+  
+//   a {
+//     color: #4183D7;
+//     text-decoration: none;
+//     font-weight: 600;
+//     padding-bottom: 2px;
+//     border-bottom: 2px dotted #4183D7;
+//     transition: all .25s ease;
+//     &:hover {
+//       color: #D2527F;
+//       border-color: #D2527F;
+//     }
+//   }
+// } */

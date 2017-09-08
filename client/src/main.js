@@ -6,8 +6,8 @@ import axios from 'axios'
 import App from './App'
 import router from './router'
 import './assets/master.css'
-// import './assets/chat.css'
-// import './assets/chat.js'
+import './assets/swipe-button.css'
+import './assets/chat.css'
 import * as firebase from 'firebase'
 
 Vue.use(VueFire)
