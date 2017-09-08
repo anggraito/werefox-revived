@@ -6,9 +6,6 @@
         <li>
           <a data-toggle="modal" data-target="#myModal" type="button" class="vote"><span>Vote</span><i class="glyphicon glyphicon-volume-up"></i></a>
         </li>
-        <li @click="startgame">
-          <a href="#" class="vote"><span></span><i class="glyphicon glyphicon-add"></i>Start</a>
-        </li>
         <li @click="callServerForBrowserCloseEvent">
           <a class="out"><span></span><i class="glyphicon glyphicon-remove"></i> Exit</a>
         </li>
@@ -17,11 +14,12 @@
         <h2>Room Chatting</h2>
       </div>
       <div class="title-page col-sm-12 com-md-9" v-if="room.start == true">
-        <h2>{{room.phase}}</h2>
+        <h2>{{room.phase}} {{room.day}}</h2>
       </div>
-      <div class="role-page col-sm-12 com-md-3">
-        <img src="../assets/wolfie.png" />
-        <p>Role: Wolfie/Villager</p>
+      <div class="role-page col-sm-12 com-md-3" v-if="userfire.role">
+        <img src="../assets/wolf1.jpg" v-if="userfire.role == 'werefox'">
+        <img src="../assets/villager1.jpg" v-if="userfire.role == 'villager'">
+        <p>Role: {{userfire.role}} </p>
       </div>
       <!-- Modal -->
       <div class="modal fade" id="myModal" role="dialog">
@@ -32,11 +30,13 @@
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
               <h4 class="modal-title">Vote</h4>
-              <small>Choose who's the werefox there as you think? </small>
+              <small>Who do you think is the Werefox ? </small>
             </div>
             <div class="modal-body">
               <form action="">
-                <input type="radio" name="gender" value="userid"> username<br>
+                <span  v-for="user in room.member" :key="user['.key']">
+                <input type="radio" name="gender" value="userid">{{user.username}}<br>
+                </span>
                 <button type="submit" class="btn btn-warning start sub">Submit</button>
               </form>
             </div>
@@ -63,7 +63,7 @@
             </div>
           </li>
         </ul>
-        <button class="btn btn-warning start">START</button>
+        <button class="btn btn-warning start"  @click="startgame">START</button>
       </div>
     </div>
   </div>
