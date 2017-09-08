@@ -5,7 +5,7 @@
         <div class="title">Username</div>
       </div>
       <ul class="messages">
-        <li v-for="chat in chatPublic">
+        <li v-for="chat in chatPublic" :key="chat['.key']">
           <strong>{{ chat.username }}</strong>: {{chat.message}}
         </li>
       </ul>
