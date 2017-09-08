@@ -41,8 +41,8 @@
   </div>
 </template>
 <script>
-  window.onbeforeunload = function() {
-    return "Are you sure you want to close the window?";
+  window.onbeforeunload = function () {
+    return 'Are you sure you want to close the window?'
   }
   import chatbox from '@/components/Chatbox'
   import jwt from 'jsonwebtoken'
@@ -70,7 +70,7 @@
         var decode = jwt.verify(window.localStorage.getItem('token'), 'werefox')
         this.datauser = decode
       },
-      callServerForBrowserCloseEvent() {
+      callServerForBrowserCloseEvent () {
         var ref = this.$db.ref('rooms').child(this.id).child('member').child(this.datauser.id)
         // console.log(ref);
         ref.remove()
