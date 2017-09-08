@@ -28,7 +28,7 @@ const firebaseApp = firebase.initializeApp(config)
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios.create({
-  baseURL: `http://loclhost:3000`
+  baseURL: `http://35.185.184.7`
 })
 Vue.prototype.$db = firebaseApp.database()
 

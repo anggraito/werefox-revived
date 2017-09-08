@@ -5,8 +5,8 @@
         <div class="title">Username</div>
       </div>
       <ul class="messages">
-        <li v-for="chat in chatPublic">
-          <strong>{{ chat.username }}</strong>: {{chat.message}}
+        <li v-for="chat in chatPublic" :key="chat['.key']">
+          <strong :class="{'god-chat': chat.username == 'GOD'}">{{ chat.username }}</strong>: {{chat.message}}
         </li>
       </ul>
       <div class="bottom_wrapper clearfix">
@@ -39,7 +39,7 @@ export default {
   data () {
     return {
       textField: '',
-      user: jwt.verify(window.localStorage.getItem('accessToken'), 'werefox')
+      user: jwt.verify(window.localStorage.getItem('token'), 'werefox')
     }
   },
   firebase () {
@@ -61,3 +61,9 @@ export default {
   }
 }
 </script>
+
+<style>
+  .god-chat {
+    color: red;
+  }
+</style>
